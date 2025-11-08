@@ -277,25 +277,37 @@
         }
 
         /* --- تنسيقات خاصة عند الطباعة --- */
-        @media print {
-            body { background-color: white; }
-            .page {
-                margin: 0;
-                box-shadow: none;
-                width: 210mm;
-                height: 297mm;
-                break-after: page;
-                border: none;
-            }
-            .print-button { display: none; } /* إخفاء زر الطباعة عند الطباعة */
+      @media print {
+    body { 
+        background-color: white; 
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
-            /* إجبار المتصفح على طباعة الألوان */
-            .header-ribbon, .page-number-box {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-        }
-    </style>
+    .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        break-after: page;
+        border: none;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .print-button { display: none; } /* إخفاء زر الطباعة عند الطباعة */
+
+    /* إجبار المتصفح على طباعة الألوان لكل العناصر المهمة */
+    .header-ribbon, 
+    .page-number-box, 
+    .header-text, 
+    .header-text div, 
+    .header-text .dr-logo-combo span {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: white !important; /* نصوص المادة والدكتور أبيض */
+    }
+}
 </head>
 <body>
     
@@ -340,7 +352,7 @@
                 
                 // --- هنا يمكنك تغيير النصوص التي تظهر في الهيدر ---
                 // --- 2.1: اسم المادة (يظهر في الهيدر) ---
-                const subject = 'Cardio Vascular System';
+                const subject = 'Psychology';
                 // --- 2.2: اسم الدكتور (يظهر في الهيدر) ---
                 const instructor = 'Dr. Abdelrahman';
 
